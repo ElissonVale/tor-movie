@@ -1,0 +1,31 @@
+version: '3'
+services:
+  
+  report-diario:
+    build: 
+      context: .
+      dockerfile: DockerFile
+      args: 
+        WWWGROUP: '${WWWGROUP:-5000}'
+    ports:
+      - '${APP_PORT:-3000}:3000'
+    volumes:
+      - '.:/var/www/html'
+    depends_on:
+      - report-pgsql
+
+  report-pgsql: 
+    image: 'postgres:15'
+    ports:
+      - '${FORWARD_DB_PORT:-5432}:5432'
+    environment:
+      PGPASSWORD: '${DB_PASSWORD:-secret}'
+      POSTGRES_DB: '${DB_DATABASE}'
+      POSTGRES_USER: '${DB_USERNAME}'
+      POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
+    volumes:
+      - 'azure-pgsql:/var/lib/postgresql/data'
+
+volumes:
+  azure-pgsql:
+    driver: local
