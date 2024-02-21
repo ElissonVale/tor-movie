@@ -1,10 +1,11 @@
 import Link from "next/link";
 
 type props = {
-    title: string
+    title: string,
+    form?: JSX.Element | JSX.Element[]
 }
 
-const PageHeader = ({ title }: props) => {
+const PageHeader = ({ title, form }: props) => {
 
     return (
         <>
@@ -16,7 +17,13 @@ const PageHeader = ({ title }: props) => {
                 </section>
                 <section className="sec-title-h" style={{ width: "90%", float: "left" }}>
                     <h1 style={{ fontWeight: "bold", textAlign: "center" }}>{title}</h1>
-                </section>               
+                </section>
+
+                {form &&
+                    <section>
+                        {form}
+                    </section>
+                }
             </div>
         </>
     );

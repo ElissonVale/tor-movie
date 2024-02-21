@@ -5,8 +5,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Report Diário - SED',
-  description: 'Report Diário - SED',
+  title: 'Torrent Movie',
+  description: 'Torrent movie management downloads and watch streaming',
 }
 
 export default function RootLayout({
