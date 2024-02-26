@@ -1,8 +1,8 @@
 type Props = {
     title: string,
     visible: boolean,
-    onHandle: () => void,
-    onClose: () => void,
+    onHandle?: () => void,
+    onClose?: () => void,
     hideFooter?: boolean,
     children: any
 }
